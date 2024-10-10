@@ -120,6 +120,7 @@ class StoresSpider(scrapy.Spider):
                     store_url = f"https://www.clarks.com/en-us/store-locator/UnitedStates/{store_no}"
                 city = data['timezone'].split('/')[-1]
                 direction_url = f"https://www.google.com/maps/dir/?api=1&destination={lat},{lng}"
+
                 item = dataItem()
                 item['store_no'] = store_no
                 item['name'] = store_name
@@ -145,6 +146,7 @@ class StoresSpider(scrapy.Spider):
                         item['status'] = 'Close'
                 else:
                     item['status'] = "Close"
+
                 item['direction_url'] = direction_url
                 item['pagesave_path'] = file_name
                 yield item
